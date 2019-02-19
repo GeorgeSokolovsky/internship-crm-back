@@ -1,8 +1,10 @@
 import { IsEmail, IsNotEmpty } from 'class-validator';
-export class CreateNewsDto {
+export class CreateArticleDto {
     @IsNotEmpty()
     readonly title: string;
     
     @IsNotEmpty()
-    readonly description: string;
+    readonly content: string;
+
+    readonly imgUrl: string;
 }
