@@ -39,4 +39,4 @@ nodemon-debug.json
 testem.log
 /typings
 
-db.config.json
+config.json

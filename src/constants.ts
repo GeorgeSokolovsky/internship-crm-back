@@ -1,1 +1,1 @@
-export const ENTITY_NAME = 'Aricle';
+export const ARTICLE_MODEL = 'Article';

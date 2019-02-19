@@ -6,7 +6,7 @@ import { MongooseOptionsFactory, MongooseModuleOptions } from '@nestjs/mongoose'
 export class ConfigService implements MongooseOptionsFactory {
     createMongooseOptions(): MongooseModuleOptions {
         return {
-            uri: `mongodb://${config.dbProperties.user}:${config.dbProperties.password}@${config.dbProperties.uri}`,
+            uri: `mongodb://${config.db.user}:${config.db.password}@${config.db.uri}`,
         }
     }
 }
