@@ -1,0 +1,31 @@
+{
+    "getArticle": [
+        {
+            "_id": "5c6c09957ccc690ad862e0fd",
+            "title": "news #3",
+            "content": "it's third news",
+            "imgUrl": "url",
+            "created_at": "2019-02-19T13:50:13.249Z",
+            "updated_at": "2019-02-19T13:50:13.249Z",
+            "__v": 0
+        },
+        {
+            "_id": "5c6c099f7ccc690ad862e0fe",
+            "title": "news #2",
+            "content": "it's second news",
+            "imgUrl": "url",
+            "created_at": "2019-02-19T13:50:23.742Z",
+            "updated_at": "2019-02-19T13:50:23.742Z",
+            "__v": 0
+        },
+        {
+            "_id": "5c6c09ac7ccc690ad862e0ff",
+            "title": "news #1",
+            "content": "it's first news",
+            "imgUrl": "url",
+            "created_at": "2019-02-19T13:50:36.031Z",
+            "updated_at": "2019-02-19T13:50:36.031Z",
+            "__v": 0
+        }
+    ]
+}
