@@ -6,9 +6,12 @@ import { AppService } from './app.service';
 import { ArticleModule } from './article/article.module';
 
 @Module({
-  imports: [MongooseModule.forRootAsync({
-    useClass: ConfigService
-  }), ArticleModule],
+  imports: [
+    MongooseModule.forRootAsync({
+      useClass: ConfigService,
+    }),
+    ArticleModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
