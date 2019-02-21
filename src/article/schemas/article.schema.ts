@@ -1,7 +1,12 @@
+import { TIMESTAMPS } from './../../constants';
 import { Schema } from 'mongoose';
 
-export const ArticleSchema = new Schema({
+export const ArticleSchema = new Schema(
+  {
     title: String,
     content: String,
     imgUrl: String,
-}, { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at'} });
+    category: String
+  },
+  TIMESTAMPS,
+);

@@ -1,6 +1,7 @@
+import { SearchCategory } from './interfaces/search-category.interface';
 import { CreateCategoryDto } from './dto/CreateCategoryDto';
 import { CategoryService } from './category.service';
-import { Controller, Body, Get, Post, Param } from '@nestjs/common';
+import { Controller, Body, Get, Post, Param, Query } from '@nestjs/common';
 
 @Controller('category')
 export class CategoryController {
@@ -11,14 +12,14 @@ export class CategoryController {
         this.categoryService.create(createCategoryDto);
     }
 
-    @Get(':substring/:options')
-    async find(@Param() params) {
-        console.log(params.substring, params.options);
-        return this.categoryService.find(params.substring, params.options);
+    @Get()
+    async find(@Query() query: SearchCategory) {
+        const {search, limit, offset} = query;
+        return this.categoryService.find(search, +limit, +offset);
     }
 
     @Get(':id')
-    async findById(@Param() params) {
-        return this.categoryService.findById(params.id);
+    async findById(@Param('id') id) {
+        return this.categoryService.findById(id);
     }
 }

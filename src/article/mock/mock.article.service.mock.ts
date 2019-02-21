@@ -1,6 +1,5 @@
 export class MockArticleService {
-    
-    findAll() {
-        return ['test'];     
-    }
+  findAll() {
+    return ['test'];
+  }
 }
