@@ -18,7 +18,7 @@ export class CategoryService {
         return await this.categoryModel.findById(id).exec();
     }
 
-    async find(substring: string, limit: number, offset: number = 0): Promise<Category> {
+    async find(substring: string = '', limit: number, offset: number = 0): Promise<Category> {
         return await this.categoryModel
             .find({ 'name' : { '$regex':  `^${substring}`, '$options': "i" } })
             .skip(limit * offset)
