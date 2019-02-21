@@ -1,3 +1,4 @@
+import { CategoryModule } from './category/category.module';
 import { ConfigService } from './config.service';
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -8,7 +9,7 @@ import { ArticleModule } from './article/article.module';
 @Module({
   imports: [MongooseModule.forRootAsync({
     useClass: ConfigService
-  }), ArticleModule],
+  }), ArticleModule, CategoryModule],
   controllers: [AppController],
   providers: [AppService],
 })
