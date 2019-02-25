@@ -1,13 +1,13 @@
 import { Article } from '../interfaces/article.interface';
 
-export const mockArtilce: Article = {
+export const mockArticle: Article = {
   title: 'test',
   imgUrl: '1212',
   content: '3232edsdfsdfsdfsd',
   category: '59459sdfg9453',
 };
 
-export const mockArtilcesArray: Article[] = [
+export const mockArticlesArray: Article[] = [
   {
     title: 'test',
     imgUrl: '1212',
@@ -34,7 +34,7 @@ export const mockArtilcesArray: Article[] = [
   },
 ];
 
-export const mockArtilcesArrayFiltered: Article[] = [
+export const mockArticlesArrayFiltered: Article[] = [
   {
     title: 'test',
     imgUrl: '1212',

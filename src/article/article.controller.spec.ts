@@ -1,8 +1,8 @@
 import { MockArticleService } from './mock/mock.article.service.mock';
 import {
-  mockArtilce,
-  mockArtilcesArray,
-  mockArtilcesArrayFiltered,
+  mockArticle,
+  mockArticlesArray,
+  mockArticlesArrayFiltered,
 } from './mock/mock.article';
 import { SearchQuery } from './interfaces/search-query.interface';
 import { Test } from '@nestjs/testing';
@@ -25,14 +25,14 @@ describe('ArticleController', () => {
     it('should return an array of articles', async () => {
       const query: SearchQuery = { categoryId: '' };
       expect(await articleController.findByCategory(query)).toEqual(
-        mockArtilcesArray,
+        mockArticlesArray,
       );
     });
 
     it('should return an array of articles with category id 1', async () => {
       const query: SearchQuery = { categoryId: '1' };
       expect(await articleController.findByCategory(query)).toEqual(
-        mockArtilcesArrayFiltered,
+        mockArticlesArrayFiltered,
       );
     });
 
@@ -43,7 +43,7 @@ describe('ArticleController', () => {
 
     it('should return the article', async () => {
       const id = '59459sdfg9453';
-      expect(await articleController.findById(id)).toEqual(mockArtilce);
+      expect(await articleController.findById(id)).toEqual(mockArticle);
     });
   });
 });
