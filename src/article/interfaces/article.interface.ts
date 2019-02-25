@@ -1,4 +1,3 @@
-import { Category } from './../../category/interfaces/category.interface';
 import { Document } from 'mongoose';
 
 export interface Article extends Document {

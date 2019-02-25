@@ -1,3 +1,3 @@
 export interface SearchQuery {
-  id: string;
+  categoryId: string;
 }

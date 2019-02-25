@@ -14,7 +14,7 @@ export class ArticleController {
 
   @Get()
   async findByCategory(@Query() query: SearchQuery) {
-    return this.articleService.findByCategory(query.id);
+    return this.articleService.findByCategory(query.categoryId);
   }
 
   @Get(':id')
