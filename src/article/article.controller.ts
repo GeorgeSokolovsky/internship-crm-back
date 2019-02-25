@@ -18,7 +18,7 @@ export class ArticleController {
   }
 
   @Get(':id')
-  async findAll(@Param('id') id: string) {
+  async findById(@Param('id') id: string) {
     return this.articleService.findById(id);
   }
 }
