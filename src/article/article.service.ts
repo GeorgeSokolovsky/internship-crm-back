@@ -16,6 +16,15 @@ export class ArticleService {
     return await createdArticle.save();
   }
 
+  async update(
+    id: string,
+    createArticleDto: CreateArticleDto,
+  ): Promise<Article> {
+    return await this.articleModel
+      .findOneAndUpdate({ _id: id }, createArticleDto)
+      .exec();
+  }
+
   async findByCategory(categoryId: string): Promise<Article[]> {
     const params = categoryId ? { category: categoryId } : {};
     return await this.articleModel.find(params);

@@ -1,7 +1,7 @@
 import { CreateArticleDto } from './dto/CreateArticleDto';
 import { SearchQuery } from './interfaces/search-query.interface';
 import { ArticleService } from './article.service';
-import { Post, Body, Controller, Get, Param, Query } from '@nestjs/common';
+import { Post, Body, Controller, Get, Param, Query, Put } from '@nestjs/common';
 
 @Controller('article')
 export class ArticleController {
@@ -10,6 +10,14 @@ export class ArticleController {
   @Post()
   async create(@Body() createArticleDto: CreateArticleDto) {
     this.articleService.create(createArticleDto);
+  }
+
+  @Put('/:id')
+  async update(
+    @Param('id') id: string,
+    @Body() createArticleDto: CreateArticleDto,
+  ) {
+    this.articleService.update(id, createArticleDto);
   }
 
   @Get()
