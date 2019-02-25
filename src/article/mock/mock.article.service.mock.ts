@@ -2,14 +2,13 @@ import { mockArtilce, mockArtilcesArray } from './mock.article';
 import { Article } from '../interfaces/article.interface';
 
 export class MockArticleService {
-  findByCategory(id: string): Promise<Article[]> {
-    const result = !id
+  async findByCategory(categoryId: string): Promise<Article[]> {
+    return !categoryId
       ? mockArtilcesArray
-      : mockArtilcesArray.filter(artilce => artilce.category === id);
-    return Promise.resolve(result);
+      : mockArtilcesArray.filter(artilce => artilce.category === categoryId);
   }
 
-  findById(id: string): Promise<Article> {
-    return Promise.resolve(mockArtilce);
+  async findById(id: string): Promise<Article> {
+    return mockArtilce;
   }
 }

@@ -36,7 +36,7 @@ describe('ArticleController', () => {
       );
     });
 
-    it('should return an epmty array', async () => {
+    it('should return an empty array', async () => {
       const query: SearchQuery = { categoryId: '154534' };
       expect(await articleController.findByCategory(query)).toEqual([]);
     });
