@@ -9,8 +9,8 @@ export const ArticleSchema = new Schema(
     imgUrl: String,
     category: {
       type: Schema.Types.ObjectId,
-      ref: CATEGORY_MODEL
-    }
+      ref: CATEGORY_MODEL,
+    },
   },
   TIMESTAMPS,
 );
