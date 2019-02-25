@@ -1,4 +1,4 @@
-import { ARTICLE_MODEL, CATEGORY_MODEL } from './../constants';
+import { ARTICLE_MODEL } from './../constants';
 import { Model } from 'mongoose';
 import { CreateArticleDto } from './dto/CreateArticleDto';
 import { Injectable } from '@nestjs/common';
@@ -16,7 +16,14 @@ export class ArticleService {
     return await createdArticle.save();
   }
 
-  async findAll(): Promise<Article> {
-    return await this.articleModel.find().populate('category').exec();
+  async findByCategory(_id: string): Promise<Article[]> {
+    return await this.articleModel.find({ category: { _id } });
+  }
+
+  async findById(id: string): Promise<Article> {
+    return await this.articleModel
+      .findById(id)
+      .populate('category')
+      .exec();
   }
 }

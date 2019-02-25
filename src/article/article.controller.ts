@@ -1,6 +1,7 @@
 import { CreateArticleDto } from './dto/CreateArticleDto';
+import { SearchQuery } from './interfaces/search-query.interface';
 import { ArticleService } from './article.service';
-import { Post, Body, Controller, Get } from '@nestjs/common';
+import { Post, Body, Controller, Get, Param, Query } from '@nestjs/common';
 
 @Controller('article')
 export class ArticleController {
@@ -12,7 +13,12 @@ export class ArticleController {
   }
 
   @Get()
-  async findAll() {
-    return this.articleService.findAll();
+  async findByCategory(@Query() query: SearchQuery) {
+    return this.articleService.findByCategory(query.id);
+  }
+
+  @Get(':id')
+  async findAll(@Param('id') id: string) {
+    return this.articleService.findById(id);
   }
 }

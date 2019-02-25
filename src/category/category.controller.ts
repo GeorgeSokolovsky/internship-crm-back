@@ -5,21 +5,21 @@ import { Controller, Body, Get, Post, Param, Query } from '@nestjs/common';
 
 @Controller('category')
 export class CategoryController {
-    constructor(private readonly categoryService: CategoryService) {}
+  constructor(private readonly categoryService: CategoryService) {}
 
-    @Post()
-    async create(@Body() createCategoryDto: CreateCategoryDto) {
-        this.categoryService.create(createCategoryDto);
-    }
+  @Post()
+  async create(@Body() createCategoryDto: CreateCategoryDto) {
+    this.categoryService.create(createCategoryDto);
+  }
 
-    @Get()
-    async find(@Query() query: SearchQuery) {
-        const {search, limit, offset} = query;
-        return this.categoryService.find(search, +limit, +offset);
-    }
+  @Get()
+  async find(@Query() query: SearchQuery) {
+    const { search, limit, offset } = query;
+    return this.categoryService.find(search, +limit, +offset);
+  }
 
-    @Get(':id')
-    async findById(@Param('id') id: number) {
-        return this.categoryService.findById(id);
-    }
+  @Get(':id')
+  async findById(@Param('id') id: number) {
+    return this.categoryService.findById(id);
+  }
 }
