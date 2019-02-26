@@ -1,4 +1,4 @@
-import { TIMESTAMPS, CATEGORY_MODEL, USER_MODEL } from './../../constants';
+import { TIMESTAMPS, CATEGORY_MODEL, USER_INFO_MODEL } from './../../constants';
 import { Schema } from 'mongoose';
 
 export const ArticleSchema = new Schema(
@@ -12,7 +12,7 @@ export const ArticleSchema = new Schema(
     },
     author: {
       type: Schema.Types.ObjectId,
-      ref: USER_MODEL,
+      ref: USER_INFO_MODEL,
     },
   },
   TIMESTAMPS,

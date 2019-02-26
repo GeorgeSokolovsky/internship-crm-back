@@ -1,5 +1,6 @@
 import { Schema } from 'mongoose';
 import * as bcrypt from 'bcryptjs';
+import { USER_INFO_MODEL } from '../../../constants';
 
 export const UserSchema = new Schema({
   email: {
@@ -7,13 +8,13 @@ export const UserSchema = new Schema({
     unique: true,
     required: true,
   },
-  name: {
-    type: String,
-    required: true,
-  },
   password: {
     type: String,
     required: true,
+  },
+  info: {
+    type: Schema.Types.ObjectId,
+    ref: USER_INFO_MODEL,
   },
 });
 

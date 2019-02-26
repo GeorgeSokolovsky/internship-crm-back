@@ -25,15 +25,17 @@ export class AuthService {
   async validateUserByPassword(
     loginAttempt: LoginUserDto,
   ): Promise<ResponseData> {
-    const user = await this.userService.findOneByEmail(loginAttempt.email);
+    const { email, password, info } = await this.userService.findOneByEmail(
+      loginAttempt.email,
+    );
 
-    if (!user || !compareSync(loginAttempt.password, user.password)) {
+    if (!compareSync(loginAttempt.password, password)) {
       throw new UnauthorizedException();
     }
 
     return {
-      user: { email: user.email, name: user.name, _id: user._id },
-      token: this.createToken({ email: user.email }),
+      user: { email, name: info.name, _id: info._id },
+      token: this.createToken({ email: info.email }),
     };
   }
 
