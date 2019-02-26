@@ -24,7 +24,7 @@ export class ArticleService {
 
   async findByCategory(categoryId: string): Promise<Article[]> {
     const params = categoryId ? { category: categoryId } : {};
-    return await this.articleModel.find(params);
+    return await this.articleModel.find(params).populate('author');
   }
 
   async findById(id: string): Promise<Article> {
