@@ -14,7 +14,6 @@ import { SearchQuery } from './interfaces/search-query.interface';
 import { ArticleService } from './article.service';
 
 @Controller('article')
-@UseGuards(AuthGuard('jwt'))
 export class ArticleController {
   constructor(private readonly articleService: ArticleService) {}
 
