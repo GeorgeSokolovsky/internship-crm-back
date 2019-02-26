@@ -20,7 +20,10 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
-  "pre-commit": ["format", "add-src"],
+  "pre-commit": [
+    "format",
+    "add-src"
+  ],
   "dependencies": {
     "@nestjs/common": "^5.7.2",
     "@nestjs/core": "^5.4.0",
