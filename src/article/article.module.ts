@@ -1,9 +1,9 @@
-import { ARTICLE_MODEL } from './../constants';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Module } from '@nestjs/common';
 import { ArticleSchema } from './schemas/article.schema';
 import { ArticleController } from './article.controller';
 import { ArticleService } from './article.service';
+import { ARTICLE_MODEL } from './../constants';
 
 @Module({
   imports: [

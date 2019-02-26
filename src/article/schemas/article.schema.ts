@@ -1,4 +1,3 @@
-import { CategorySchema } from './../../category/schemas/category.schema';
 import { TIMESTAMPS, CATEGORY_MODEL } from './../../constants';
 import { Schema } from 'mongoose';
 
