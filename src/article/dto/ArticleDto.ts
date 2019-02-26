@@ -1,6 +1,5 @@
-import { Category } from './../../category/interfaces/category.interface';
 import { IsNotEmpty } from 'class-validator';
-export class CreateArticleDto {
+export class ArticleDto {
   @IsNotEmpty()
   readonly title: string;
 
