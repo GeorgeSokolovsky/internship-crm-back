@@ -1,4 +1,4 @@
-import { TIMESTAMPS, CATEGORY_MODEL } from './../../constants';
+import { TIMESTAMPS, CATEGORY_MODEL, USER_MODEL } from './../../constants';
 import { Schema } from 'mongoose';
 
 export const ArticleSchema = new Schema(
@@ -9,6 +9,10 @@ export const ArticleSchema = new Schema(
     category: {
       type: Schema.Types.ObjectId,
       ref: CATEGORY_MODEL,
+    },
+    author: {
+      type: Schema.Types.ObjectId,
+      ref: USER_MODEL,
     },
   },
   TIMESTAMPS,

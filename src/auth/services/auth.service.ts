@@ -32,7 +32,7 @@ export class AuthService {
     }
 
     return {
-      user: { email: user.email, name: user.name },
+      user: { email: user.email, name: user.name, _id: user._id },
       token: this.createToken({ email: user.email }),
     };
   }
