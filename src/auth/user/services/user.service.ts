@@ -27,4 +27,8 @@ export class UserService {
   async findOneByEmail(email: string): Model<User> {
     return await this.userModel.findOne({ email }).populate('info');
   }
+
+  async findUserInfoByEmail(email: string): Model<UserInfo> {
+    return await this.userInfoModel.findOne({ email });
+  }
 }

@@ -1,6 +1,7 @@
 import { ARTICLE_MODEL } from './../constants';
 import { Model } from 'mongoose';
 import { ArticleDto } from './dto/ArticleDto';
+import { ArticleWithoutAuthorDto } from './dto/ArticleWithoutAuthorDto';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Article } from './interfaces/article.interface';
@@ -16,7 +17,10 @@ export class ArticleService {
     return await createdArticle.save();
   }
 
-  async update(id: string, articleDto: ArticleDto): Promise<Article> {
+  async update(
+    id: string,
+    articleDto: ArticleWithoutAuthorDto,
+  ): Promise<Article> {
     return await this.articleModel
       .findOneAndUpdate({ _id: id }, articleDto)
       .exec();
