@@ -10,7 +10,7 @@ import {
 } from '@nestjs/common';
 import { UserDecorator } from '../auth/user/decorators/user.decorator';
 import { AuthGuard } from '@nestjs/passport';
-import { ArticleWithoutAuthorDto } from './dto/ArticleWithoutAuthorDto';
+import { ArticleDto } from './dto/ArticleDto';
 import { SearchQuery } from './interfaces/search-query.interface';
 import { User } from './interfaces/user.interface';
 import { ArticleService } from './article.service';
@@ -21,19 +21,13 @@ export class ArticleController {
 
   @Post()
   @UseGuards(AuthGuard('jwt'))
-  async create(
-    @UserDecorator() user: User,
-    @Body() articleDto: ArticleWithoutAuthorDto,
-  ) {
+  async create(@UserDecorator() user: User, @Body() articleDto: ArticleDto) {
     this.articleService.create({ ...articleDto, author: user._id });
   }
 
   @Put('/:id')
   @UseGuards(AuthGuard('jwt'))
-  async update(
-    @Param('id') id: string,
-    @Body() articleDto: ArticleWithoutAuthorDto,
-  ) {
+  async update(@Param('id') id: string, @Body() articleDto: ArticleDto) {
     this.articleService.update(id, articleDto);
   }
 

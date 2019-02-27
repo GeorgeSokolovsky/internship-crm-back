@@ -9,8 +9,5 @@ export class ArticleDto {
   @IsNotEmpty()
   readonly category: string;
 
-  @IsNotEmpty()
-  readonly author: string;
-
   readonly imgUrl: string;
 }
