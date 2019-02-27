@@ -7,6 +7,7 @@ import { ResponseData } from '../interfaces/response-data.interface';
 import { LoginUserDto } from '../user/dto/login-user.dto';
 import { Token } from '../interfaces/token.interface';
 import { auth } from '../../../config.json';
+import { User } from '../interfaces/user.interface';
 
 @Injectable()
 export class AuthService {
@@ -39,14 +40,11 @@ export class AuthService {
     };
   }
 
-  async validateUserByJwt(payload: JwtPayload): Promise<ResponseData> {
-    let user = await this.userService.findOneByEmail(payload.email);
+  async validateUserByJwt(payload: JwtPayload): Promise<User> {
+    let user = await this.userService.findUserInfoByEmail(payload.email);
 
     if (!user) throw new UnauthorizedException();
 
-    return {
-      user,
-      token: this.createToken({ email: user.email }),
-    };
+    return user;
   }
 }
