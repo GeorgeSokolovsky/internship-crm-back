@@ -1,3 +1,4 @@
+import { CommentModule } from './comment/comment.module';
 import { CategoryModule } from './category/category.module';
 import { ConfigService } from './config.service';
 import { Module } from '@nestjs/common';
@@ -13,6 +14,7 @@ import { AuthModule } from './auth/auth.module';
       useClass: ConfigService,
     }),
     ArticleModule,
+    CommentModule,
     CategoryModule,
     AuthModule,
   ],
