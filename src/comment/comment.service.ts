@@ -16,6 +16,6 @@ export class CommentService {
   }
 
   async findByArticleId(id: string) {
-    return await this.commentModel.find({ articleId: id }).exec();
+    return await this.commentModel.find({ articleId: id }).populate('author');
   }
 }
