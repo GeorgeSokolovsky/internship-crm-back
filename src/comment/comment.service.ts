@@ -15,7 +15,7 @@ export class CommentService {
     return await createdComment.save();
   }
 
-  async findByArticleId(id: string) {
+  async findByArticleId(id: string): Promise<Comment> {
     return await this.commentModel.find({ articleId: id }).populate('author');
   }
 }
