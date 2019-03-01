@@ -1,3 +1,4 @@
+import { CommentGateway } from './events/comment.gateway';
 import { CommentService } from './comment.service';
 import { CommentController } from './comment.controller';
 import { CommentSchema } from './schemas/comment.schema';
@@ -10,6 +11,6 @@ import { COMMENT_MODEL } from './../constants';
     MongooseModule.forFeature([{ name: COMMENT_MODEL, schema: CommentSchema }]),
   ],
   controllers: [CommentController],
-  providers: [CommentService],
+  providers: [CommentService, CommentGateway],
 })
 export class CommentModule {}
