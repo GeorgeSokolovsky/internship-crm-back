@@ -24,8 +24,11 @@ export class CommentController {
     if (this.commentGateway.commentViewers.has(commentDto.articleId)) {
       this.commentGateway.commentViewers
         .get(commentDto.articleId)
-        .forEach((client: SocketIO.Socket) => {
-          client.emit('newComment', comment);
+        .forEach(async (client: SocketIO.Socket) => {
+          client.emit(
+            'newComment',
+            await this.commentService.findOne(comment._id),
+          );
         });
     }
   }
