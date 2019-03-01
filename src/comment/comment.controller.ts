@@ -16,13 +16,16 @@ export class CommentController {
   @Post()
   @UseGuards(AuthGuard('jwt'))
   async create(@UserDecorator() user: User, @Body() commentDto: CommentDto) {
-    this.commentService.create({ ...commentDto, author: user._id });
+    const comment = await this.commentService.create({
+      ...commentDto,
+      author: user._id,
+    });
 
     if (this.commentGateway.commentViewers.has(commentDto.articleId)) {
       this.commentGateway.commentViewers
         .get(commentDto.articleId)
         .forEach(client => {
-          client.emit('newComment', { ...commentDto, author: user._id });
+          client.emit('newComment', comment);
         });
     }
   }
