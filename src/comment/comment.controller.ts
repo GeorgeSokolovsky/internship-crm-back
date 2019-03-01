@@ -1,3 +1,4 @@
+import { CommentGateway } from './events/comment.gateway';
 import { CommentDto } from './dto/comment.dto';
 import { CommentService } from './comment.service';
 import { Post, Body, Controller, UseGuards, Get, Param } from '@nestjs/common';
@@ -7,11 +8,22 @@ import { User } from '../article/interfaces/user.interface';
 
 @Controller('comment')
 export class CommentController {
-  constructor(private readonly commentService: CommentService) {}
+  constructor(
+    private readonly commentService: CommentService,
+    private commentGateway: CommentGateway,
+  ) {}
 
   @Post()
   @UseGuards(AuthGuard('jwt'))
   async create(@UserDecorator() user: User, @Body() commentDto: CommentDto) {
+    if (this.commentGateway.commentViewers.has(commentDto.articleId)) {
+      this.commentGateway.commentViewers
+        .get(commentDto.articleId)
+        .forEach(client => {
+          client.emit('newComment', { ...commentDto, author: user._id });
+        });
+    }
+
     this.commentService.create({ ...commentDto, author: user._id });
   }
 
