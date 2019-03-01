@@ -24,7 +24,7 @@ export class CommentController {
     if (this.commentGateway.commentViewers.has(commentDto.articleId)) {
       this.commentGateway.commentViewers
         .get(commentDto.articleId)
-        .forEach(client => {
+        .forEach((client: SocketIO.Socket) => {
           client.emit('newComment', comment);
         });
     }
