@@ -11,22 +11,21 @@ export class CommentGateway implements OnGatewayConnection {
   @WebSocketServer() server;
   commentViewers = new Map();
 
-  handleConnection(client) {
+  handleConnection(client: SocketIO.Socket) {
     client.emit('connection', 'Connected to the server');
   }
 
   @SubscribeMessage('startView')
-  startView(client, articleId: string) {
+  startView(client: SocketIO.Socket, articleId: string) {
     const listeners = this.commentViewers.get(articleId) || [];
-
     this.commentViewers.set(articleId, [...listeners, client]);
   }
 
   @SubscribeMessage('endView')
-  endView(client, articleId: string) {
+  endView(client: SocketIO.Socket, articleId: string) {
     const listeners = this.commentViewers.get(articleId);
     this.commentViewers.set(articleId, [
-      ...removeItemFromArray(listeners, client),
+      ...removeItemFromArray<SocketIO.Socket>(listeners, client),
     ]);
   }
 }

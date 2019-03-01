@@ -16,6 +16,8 @@ export class CommentController {
   @Post()
   @UseGuards(AuthGuard('jwt'))
   async create(@UserDecorator() user: User, @Body() commentDto: CommentDto) {
+    this.commentService.create({ ...commentDto, author: user._id });
+
     if (this.commentGateway.commentViewers.has(commentDto.articleId)) {
       this.commentGateway.commentViewers
         .get(commentDto.articleId)
@@ -23,8 +25,6 @@ export class CommentController {
           client.emit('newComment', { ...commentDto, author: user._id });
         });
     }
-
-    this.commentService.create({ ...commentDto, author: user._id });
   }
 
   @Get('/:articleId')
